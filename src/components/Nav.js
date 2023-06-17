@@ -20,36 +20,40 @@ const Nav = () => {
   };
 
   return (
-    <div className="stayledNav">
-      <Link to="/" className="logo" onClick={clearSearch}>
-        <img src={logo} alt="logo" />
-        <h1>Ignite</h1>
-      </Link>
+    <div>
+      <div className="stayledNav">
+        <Link to="/" className="logo" onClick={clearSearch}>
+          <img src={logo} alt="logo" />
+          <h1>Ignite</h1>
+        </Link>
 
-      <div className="">
-        <ul>
-          <li>
-            <Link to="/upcoming-games">Upcoming Games</Link>
-          </li>
-          <li>
-            <Link to="/popular-games">Popular Games</Link>
-          </li>
-          <li>
-            <Link to="/new-games">New Games</Link>
-          </li>
-        </ul>
+        <form className="search">
+          <input
+            value={textInput}
+            type="text"
+            onChange={(e) => setTextInput(e.target.value)}
+          />
+          <button onClick={submitSearch} type="submit">
+            Search
+          </button>
+        </form>
       </div>
 
-      <form className="search">
-        <input
-          value={textInput}
-          type="text"
-          onChange={(e) => setTextInput(e.target.value)}
-        />
-        <button onClick={submitSearch} type="submit">
-          Search
-        </button>
-      </form>
+      <div className="small-nav">
+        <ul className="links">
+          <Link to="/upcoming-games">
+            Upcoming Games
+          </Link>
+
+          <Link to="/popular-games">
+            Popular Games
+          </Link>
+
+          <Link to="/new-games">
+            New Games
+          </Link>
+        </ul>
+      </div>
     </div>
   );
 };
