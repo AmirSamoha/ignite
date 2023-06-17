@@ -58,7 +58,7 @@ img {
 .Games {
   min-height: 80vh;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   column-gap: 3rem;
   row-gap: 5rem;
 }
@@ -198,7 +198,7 @@ img {
 
 .small-nav {
   position: absolute;
-  left: 5%;
+  padding: 0rem 5rem;
   font-size: larger;
 }
 /*nav.js*/
