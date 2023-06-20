@@ -80,6 +80,7 @@ img {
 
 /*Gamedatails.js*/
 .card-shadow {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   width: 100%;
   min-height: 100vh;
   overflow-y: scroll;
@@ -111,6 +112,7 @@ img {
 .detail img {
   width: 100%;
 }
+
 
 .stats {
   display: flex;

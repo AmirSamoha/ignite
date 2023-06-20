@@ -73,3 +73,8 @@ export const screenshotsURL = (game_id) => {
 export const searchGameURL = (game_name) => {
   return `${base_Url}games?key=${key}&search=${game_name}&page_size=9`
 };
+
+//Get links to the stores that sell the game.
+export const sellStoreGamesURL = (game_id) => {
+ return `${base_Url}games/${game_id}/stores?&key=${key}`
+};

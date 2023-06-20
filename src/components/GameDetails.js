@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 //redux
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router";
@@ -16,7 +17,9 @@ const GameDetails = () => {
   const navigate = useNavigate();
 
   //data from the redux module
-  const { game, screen, isLoading } = useSelector((state) => state.details);
+  const { game, stores, screen, isLoading } = useSelector(
+    (state) => state.details
+  );
 
   // Add checks to ensure that game and screen are defined before rendering
   if (!game || !screen) {
@@ -27,7 +30,8 @@ const GameDetails = () => {
   const exitDetailsHendler = (e) => {
     const element = e.target;
     if (element.classList.contains("card-shadow")) {
-      document.body.style.overflow = "auto";
+      // if this class exists in the element
+      document.body.style.overflow = "auto"; // we return to the original page
       navigate("/");
     }
   };
@@ -99,6 +103,19 @@ const GameDetails = () => {
             <div className="gallery">
               {screen.results.map((screen) => (
                 <img src={screen.image} key={screen.id} alt="game"></img>
+              ))}
+            </div>
+            <div className="stores">
+              <h3>Love the game? </h3>
+              <span>
+                Here some of website you can buy<br></br>
+              </span>
+              {stores.results.map((store) => (
+                <li>
+                  <Link to={store.url} key={store.id}>
+                    {store.url}
+                  </Link>
+                </li>
               ))}
             </div>
           </div>
