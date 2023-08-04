@@ -113,7 +113,6 @@ img {
   width: 100%;
 }
 
-
 .stats {
   display: flex;
   align-items: center;
@@ -194,13 +193,17 @@ img {
 
 .links {
   display: flex;
-  flex-direction: column;
-  color: #76ffa4;
+  flex-direction: row;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
 .small-nav {
   position: absolute;
   padding: 0rem 5rem;
   font-size: larger;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 /*nav.js*/

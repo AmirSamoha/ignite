@@ -4,10 +4,23 @@ import logo from "../img/logo.svg";
 import { fetchSearch } from "../actions/gamesActions";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+//login to app
+import { useAuth0 } from "@auth0/auth0-react";
+import LoginButton from "./LoginButton";
+import LogoutButton from "./LogoutButton ";
 
 const Nav = () => {
+  const { user, isAuthenticated, isLoading } = useAuth0();
+
   const dispatch = useDispatch();
   const [textInput, setTextInput] = useState("");
+
+  // if (isLoading) {
+  //   return <div>Loading ...</div>;
+  // }
+
+  console.log(isAuthenticated);
+  console.log(user);
 
   const submitSearch = (e) => {
     e.preventDefault();
@@ -40,19 +53,25 @@ const Nav = () => {
       </div>
 
       <div className="small-nav">
-        <ul className="links">
-          <Link to="/upcoming-games">
-            Upcoming Games
-          </Link>
+        <div>
+          {isAuthenticated ? <LogoutButton /> : <LoginButton />}
 
-          <Link to="/popular-games">
-            Popular Games
-          </Link>
+          {user && <div>
+             <p>{user.name}</p>
+             <p>{user.nickname}</p>
+             <p>{user.picture}</p>
+           </div>  }
+        </div>
 
-          <Link to="/new-games">
-            New Games
-          </Link>
-        </ul>
+        <div>
+          <ul className="links">
+            <Link to="/upcoming-games">Upcoming Games</Link>
+
+            <Link to="/popular-games">Popular Games</Link>
+
+            <Link to="/new-games">New Games</Link>
+          </ul>
+        </div>
       </div>
     </div>
   );

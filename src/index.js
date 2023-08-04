@@ -9,19 +9,32 @@ import rootReducer from "./reducers";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 import { BrowserRouter } from "react-router-dom";
+//auth0 for signing un users
+import { Auth0Provider } from "@auth0/auth0-react";
 
 const store = configureStore({
   reducer: rootReducer,
   thunk,
 });
 
+const domainKey = process.env.REACT_APP_DOMAIN;
+const clientIdKey = process.env.REACT_APP_CLIENTID;
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <Auth0Provider
+        domain={domainKey}
+        clientId={clientIdKey}
+        authorizationParams={{
+          redirect_uri: window.location.origin,
+        }}
+      >
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </Auth0Provider>
     </Provider>
   </React.StrictMode>
 );
